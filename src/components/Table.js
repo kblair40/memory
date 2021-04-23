@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "./Card";
-import EndGame from "./EndGame";
+import GameOver from "./GameOver";
 import ScoreKeeper from "./ScoreKeeper";
 import Fab from "@material-ui/core/Fab";
 import { shuffle, getCards } from "../helpers";
@@ -192,7 +192,7 @@ class Table extends Component {
         ) : loading ? (
           <CircularProgress />
         ) : (
-          (<h1>Game Over</h1>)()
+          <GameOver />
 
           // Replace with EndGame Component
         )}
@@ -235,3 +235,54 @@ class Table extends Component {
 }
 
 export default withStyles(styles)(Table);
+
+// return (
+//   <div className={classes.scoreContainer}>
+//     {gameOver ? (
+//       <ScoreKeeper
+//         increment={100 / (numberOfCards[difficulty] / 2)}
+//         matchCount={matchCount}
+//         attempts={attempts}
+//       />
+//     ) : loading ? (
+//       <CircularProgress />
+//     ) : (
+//       <h1>Game Over</h1>
+
+//       // Replace with EndGame Component
+//     )}
+//     {!loading ? (
+//       <div
+//         className={`${classes.Table} ${
+//           difficulty === "easy"
+//             ? classes.diffEasy
+//             : difficulty === "moderate"
+//             ? classes.diffMod
+//             : classes.diffHard
+//         }`}
+//       >
+//         {this.state.deck.map((card, idx) => (
+//           <Card
+//             handleFlip={this.handleFlip}
+//             isFaceDown={card.isFaceDown} // changed from hardcoding true
+//             isDisabled={isDisabled}
+//             imgUrl={card.image}
+//             id={card.key}
+//             key={card.key}
+//             className={classes.singleCard}
+//           />
+//         ))}
+//         <Fab
+//           className={classes.fab}
+//           onClick={endGame}
+//           variant="extended"
+//           color="secondary"
+//         >
+//           {gameOver ? "Quit" : "Play Again!"}
+//         </Fab>
+//       </div>
+//     ) : (
+//       <CircularProgress />
+//     )}
+//   </div>
+// );

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import LinearProgress from "@material-ui/core/LinearProgress";
 const styles = {
   scoreKeeper: {
+    fontFamily: "Roboto",
     width: "100%",
     display: "flex",
     flexDirection: "column",
@@ -10,15 +11,18 @@ const styles = {
   },
   matchCount: {
     margin: ".5rem 0",
+    fontWeight: "400",
   },
   attempts: {
     margin: ".5rem 0",
+    fontWeight: "400",
   },
   progress: {
     width: "50%",
   },
   header: {
-    fontWeight: "600",
+    fontFamily: "Roboto",
+    fontWeight: "500",
     marginRight: ".5rem",
   },
 };
