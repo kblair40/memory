@@ -7,10 +7,6 @@ const styles = {
     fontWeight: "700",
     fontSize: "2rem",
     letterSpacing: ".1rem",
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexWrap: "wrap",
     justifyContent: "center",
   },
 };

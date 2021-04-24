@@ -3,17 +3,43 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { green, red, orange } from "@material-ui/core/colors";
-// import green from "@material-ui/core/colors/green";
 import { withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import "./SetDifficulty.css";
 
 const styles = {
+  SetDifficulty: {
+    width: "100%",
+    // border: "1px solid black",
+    padding: "1rem",
+    borderRadius: "8px",
+    background: "rgb(144,202,249)",
+    background:
+      "linear-gradient(128deg, rgba(144,202,249,1) 0%, rgba(187,222,251,1) 100%)",
+    boxShadow: "0 5px 20px rgba(0, 0, 0, 0.3)",
+    // height: "50%",
+    // position: "absolute",
+    // top: "25%",
+    // display: "flex",
+    // flexDirection: "column",
+    // marginBottom: "10px",
+    // alignItems: "center",
+    // justifyContent: "center",
+  },
   label: {
-    color: "rgba(0,0,0,0.8)",
+    fontFamily: "Roboto",
+    fontWeight: "700",
+    fontSize: "30px",
+    color: "#0d47a1",
+    marginBottom: "1.5rem",
+    textAlign: "center",
+    borderBottom: ".5px solid #1976d2",
   },
   item: {
-    marginBottom: "-10px",
+    // marginBottom: "-10px",
+    color: "#0d47a1",
+    fontFamily: "Roboto",
+    fontWeight: "400",
+    fontSize: "20px",
   },
   easy: {
     color: green[500],
@@ -40,7 +66,7 @@ class SetDifficulty extends Component {
   render() {
     const { handleChange, difficulty, classes } = this.props;
     return (
-      <div className="SetDifficulty">
+      <div className={classes.SetDifficulty}>
         <FormLabel classes={{ root: classes.label }}>
           Select Difficulty
         </FormLabel>
@@ -50,7 +76,7 @@ class SetDifficulty extends Component {
           name="difficulty"
         >
           <FormControlLabel
-            classes={{ root: classes.item }}
+            classes={{ label: classes.item }}
             value="easy"
             control={
               <Radio
@@ -64,7 +90,7 @@ class SetDifficulty extends Component {
             checked={difficulty === "easy"}
           />
           <FormControlLabel
-            classes={{ root: classes.item }}
+            classes={{ label: classes.item }}
             value="moderate"
             control={
               <Radio
@@ -78,6 +104,7 @@ class SetDifficulty extends Component {
             checked={difficulty === "moderate"}
           />
           <FormControlLabel
+            classes={{ label: classes.item }}
             value="hard"
             control={
               <Radio

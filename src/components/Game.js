@@ -5,12 +5,36 @@ import { withStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 
 const DECKURL = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=";
-
+// Game: {
+//   width: "100vw",
+//   height: "100vh",
+//   maxWidth: "1000px",
+//   maxHeight: "100vh",
+//   display: "flex",
+//   flexDirection: "column",
+//   justifyContent: "center",
+//   alignItems: "center",
+// },
+// gameContainer: {
+//   height: "100%",
+// },
+// playBtn: {
+//   width: "33%",
+// },
+// };
 const styles = {
   Game: {
     width: "100vw",
-    maxWidth: "1000px",
-    marginTop: "25px",
+    height: "100vh",
+    maxHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    background: "rgb(144,202,249);",
+    background:
+      "linear-gradient(128deg, rgba(144,202,249,1) 0%, rgba(100,181,246,1) 100%)",
+  },
+  gameContainer: {
+    height: "100%",
     maxHeight: "100vh",
     display: "flex",
     flexDirection: "column",
@@ -18,7 +42,11 @@ const styles = {
     alignItems: "center",
   },
   playBtn: {
-    width: "25%",
+    fontFamily: "Roboto",
+    fontSize: "22px",
+    width: "100%",
+    // borderRadius: "10px ",
+    marginTop: "1rem",
   },
 };
 
@@ -55,28 +83,32 @@ class Game extends Component {
     if (!gameStarted) {
       return (
         <div className={classes.Game}>
-          <SetDifficulty
-            difficulty={difficulty}
-            handleChange={this.handleChange}
-          />
-          <Fab
-            className={classes.playBtn}
-            onClick={this.handleClick}
-            variant="extended"
-            color="primary"
-          >
-            Play!
-          </Fab>
+          <div className={classes.gameContainer}>
+            <SetDifficulty
+              difficulty={difficulty}
+              handleChange={this.handleChange}
+            />
+            <Fab
+              className={classes.playBtn}
+              onClick={this.handleClick}
+              variant="extended"
+              color="primary"
+            >
+              Play!
+            </Fab>
+          </div>
         </div>
       );
     } else {
       return (
         <div className={classes.Game}>
-          <Table
-            endGame={this.endGame}
-            gameOver={gameOver}
-            difficulty={difficulty}
-          />
+          <div className={classes.gameContainer}>
+            <Table
+              endGame={this.endGame}
+              gameOver={gameOver}
+              difficulty={difficulty}
+            />
+          </div>
         </div>
       );
     }

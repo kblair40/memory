@@ -17,16 +17,16 @@ const numberOfCards = {
 const styles = {
   Table: {
     boxSizing: "border-box",
-    padding: "0.5rem",
-    maxHeight: "100%",
+    padding: "1.5rem",
+    maxHeight: "inherit",
     overflow: "hidden",
     width: "95%",
     display: "grid",
     justifyContent: "center",
     alignItems: "center",
     justifyItems: "center",
-    gridGap: "6px",
-    border: "2px inset rgba(0, 0, 0, 0.3)",
+    gridGap: ".6rem",
+    // border: "2px inset rgba(0, 0, 0, 0.3)",
     borderRadius: "8px",
   },
   diffEasy: {

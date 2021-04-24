@@ -8,8 +8,11 @@ const styles = {
     maxWidth: "100%",
     backgroundColor: "transparent",
   },
+  boxSizing: "border-box",
   cardContainer: {
-    padding: "0px",
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "stretch",
   },
 };
 
@@ -37,11 +40,11 @@ class Card extends Component {
           flipDirection="horizontal"
           style={{ padding: "0px" }}
         >
-          <FrontSide>
+          <FrontSide style={{ padding: "0px" }}>
             <img src={imgUrl} className={classes.img} />
           </FrontSide>
 
-          <BackSide>
+          <BackSide style={{ padding: "0px" }}>
             <img src={cardBack} className={classes.img} />
           </BackSide>
         </Flippy>

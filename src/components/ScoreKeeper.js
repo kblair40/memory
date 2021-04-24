@@ -10,14 +10,17 @@ const styles = {
     alignItems: "center",
   },
   matchCount: {
+    color: "#002171",
     margin: ".5rem 0",
     fontWeight: "400",
   },
   attempts: {
+    color: "#002171",
     margin: ".5rem 0",
     fontWeight: "400",
   },
   progress: {
+    color: "#002171",
     width: "50%",
   },
   header: {
