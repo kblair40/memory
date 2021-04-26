@@ -17,38 +17,70 @@ const numberOfCards = {
 const styles = {
   Table: {
     boxSizing: "border-box",
-    padding: "1.5rem",
-    maxHeight: "inherit",
-    overflow: "hidden",
-    width: "95%",
+    // overflow: "scroll",
+    // width: "95%",
+    maxWidth: "740px",
+    minWidth: "320px",
+    padding: "1rem",
     display: "grid",
     justifyContent: "center",
     alignItems: "center",
     justifyItems: "center",
-    gridGap: ".6rem",
-    // border: "2px inset rgba(0, 0, 0, 0.3)",
-    borderRadius: "8px",
+    gridColumnGap: ".2rem",
+    gridRowGap: ".1rem",
+    // border: "2px inset rgba(22, 124, 178, 0.3)",
+    // borderRadius: "8px",
   },
   diffEasy: {
     gridTemplateColumns: "repeat(5, 19%)",
     gridTemplateRows: "repeat(2, 1fr) .5fr",
   },
   diffMod: {
-    gridTemplateColumns: "repeat(6, 16%)",
+    gridTemplateColumns: "repeat(6, 16.5%)",
     gridTemplateRows: "repeat(4, 1fr) .5fr",
+    maxWidth: "700px",
   },
   diffHard: {
-    gridTemplateColumns: "repeat(8, 12%)",
-    gridTemplateRows: "repeat(5, 1fr) .5fr",
+    gridTemplateColumns: "repeat(8, minmax(auto, 12%))",
+    gridTemplateRows: "repeat(5, 18%) 10%",
   },
+  // 245, 234, 214 #F5EAD6 - creme
+  // 22, 124, 178 #167CB2 - blue
   fab: {
     width: "50%",
     gridColumn: "1/-1",
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    backgroundColor: "rgba(22, 124, 178,1)",
+    color: "#F5EAD6",
+    letterSpacing: ".05rem",
+    transitionDuration: ".3s",
+    "&:hover": {
+      backgroundColor: "rgba(22, 124, 178, .9)",
+    },
+    // backgroundColor: "blue",
+    // position: "absolute",
+    // bottom: "1%",
+    // left: "50%",
+    // right: "25%",
   },
   scoreContainer: {
+    marginTop: "1rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    // position: "fixed",
+    // top: "1%",
+    // width: "50%",
+  },
+  "@media screen and (max-width: 400px)": {
+    diffHard: {
+      gridTemplateColumns: "repeat(6, 16%)",
+      gridTemplateRows: "repeat(7, 12%) 10%",
+    },
+    Table: {
+      gridGap: "none",
+    },
   },
 };
 

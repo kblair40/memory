@@ -5,8 +5,9 @@ const styles = {
   EndGame: {
     fontFamily: "Roboto",
     fontWeight: "700",
+    color: "rgb(22, 124, 178)",
     fontSize: "2rem",
-    letterSpacing: ".1rem",
+    letterSpacing: ".05rem",
     justifyContent: "center",
   },
 };

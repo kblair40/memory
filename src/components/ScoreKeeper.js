@@ -10,17 +10,22 @@ const styles = {
     alignItems: "center",
   },
   matchCount: {
-    color: "#002171",
+    color: "#167CB2",
     margin: ".5rem 0",
     fontWeight: "400",
+    letterSpacing: ".05rem",
   },
   attempts: {
-    color: "#002171",
+    color: "#167CB2",
     margin: ".5rem 0",
     fontWeight: "400",
+    letterSpacing: ".05rem",
+  },
+  secondaryColor: {
+    backgroundColor: "#167CB2",
   },
   progress: {
-    color: "#002171",
+    backgroundColor: "rgba(22, 124, 178, .3)",
     width: "50%",
   },
   header: {
@@ -39,7 +44,10 @@ class ScoreKeeper extends Component {
           <span>{attempts}</span>
         </div>
         <LinearProgress
-          className={classes.progress}
+          classes={{
+            root: classes.progress,
+            barColorPrimary: classes.secondaryColor,
+          }}
           variant="determinate"
           value={increment * matchCount}
         />

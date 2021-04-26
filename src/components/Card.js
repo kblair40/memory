@@ -8,9 +8,10 @@ const styles = {
     maxWidth: "100%",
     backgroundColor: "transparent",
   },
-  boxSizing: "border-box",
+
   cardContainer: {
     // display: "flex",
+    // boxSizing: "border-box",
     // flexDirection: "column",
     // alignItems: "stretch",
   },

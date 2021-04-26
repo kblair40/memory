@@ -1,6 +1,7 @@
 import { MissedVideoCall } from "@material-ui/icons";
 import React, { Component } from "react";
 import Game from "./Game";
+import "./App.css";
 
 // 3f50b5 - mid
 // dark - 002884

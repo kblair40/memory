@@ -5,48 +5,37 @@ import { withStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 
 const DECKURL = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=";
-// Game: {
-//   width: "100vw",
-//   height: "100vh",
-//   maxWidth: "1000px",
-//   maxHeight: "100vh",
-//   display: "flex",
-//   flexDirection: "column",
-//   justifyContent: "center",
-//   alignItems: "center",
-// },
-// gameContainer: {
-//   height: "100%",
-// },
-// playBtn: {
-//   width: "33%",
-// },
-// };
+
 const styles = {
   Game: {
-    width: "100vw",
+    // width: "100vw",
     height: "100vh",
-    maxHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    background: "rgb(144,202,249);",
-    background:
-      "linear-gradient(128deg, rgba(144,202,249,1) 0%, rgba(100,181,246,1) 100%)",
-  },
-  gameContainer: {
-    height: "100%",
+    // paddingBottom: "2rem",
+    // minheight: "100vh",
     maxHeight: "100vh",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    background: "rgb(245,234,214)",
+    // background:
+    // "linear-gradient(128deg, rgba(144,202,249,1) 0%, rgba(100,181,246,1) 100%)",
+    flexWrap: "no-wrap",
   },
   playBtn: {
+    backgroundColor: "rgba(22, 124, 178, 1)",
+    color: "rgb(245,234,214)",
     fontFamily: "Roboto",
     fontSize: "22px",
     width: "100%",
-    // borderRadius: "10px ",
-    marginTop: "1rem",
+    maxWidth: "300px",
+    // marginTop: "1rem",
+    position: "relative",
+    top: "2rem",
+    transitionDuration: ".3s",
+    "&:hover": {
+      backgroundColor: "rgba(22, 124, 178, .9)",
+    },
   },
 };
 
@@ -83,20 +72,20 @@ class Game extends Component {
     if (!gameStarted) {
       return (
         <div className={classes.Game}>
-          <div className={classes.gameContainer}>
-            <SetDifficulty
-              difficulty={difficulty}
-              handleChange={this.handleChange}
-            />
-            <Fab
-              className={classes.playBtn}
-              onClick={this.handleClick}
-              variant="extended"
-              color="primary"
-            >
-              Play!
-            </Fab>
-          </div>
+          {/* <div className={classes.gameContainer}> */}
+          <SetDifficulty
+            difficulty={difficulty}
+            handleChange={this.handleChange}
+          />
+          <Fab
+            className={classes.playBtn}
+            onClick={this.handleClick}
+            variant="extended"
+            color="primary"
+          >
+            Play!
+          </Fab>
+          {/* </div> */}
         </div>
       );
     } else {
