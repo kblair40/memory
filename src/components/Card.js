@@ -51,16 +51,14 @@ class Card extends Component {
         <Flippy
           isFlipped={isFaceDown ? true : false}
           flipDirection="horizontal"
-          style={{ padding: "0px", overflow: "hidden" }}
         >
-          <FrontSide style={{ padding: "0px", overflow: "hidden" }}>
+          <FrontSide style={{ padding: "0px" }}>
             <img src={imgUrl} className={classes.img} />
           </FrontSide>
 
           <BackSide
             style={{
               padding: "0px",
-              overflow: "hidden",
             }}
           >
             <img src={cardBack} className={classes.img} />

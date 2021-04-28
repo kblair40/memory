@@ -19,33 +19,25 @@ const styles = {
   Table: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-between",
     justifyContent: "flex-start",
     alignItems: "center",
     alignContent: "center",
-    // width: "100%",
     height: "100%",
     boxSizing: "border-box",
     maxWidth: "740px",
     minWidth: "320px",
     padding: "0 .5rem",
-    border: "2px inset rgb(141, 209, 205)",
-    borderRadius: "8px",
   },
   scoreContainer: {
     width: "100%",
   },
   cards: {
-    // padding: "1rem",
     width: "100%",
     height: "100%",
     display: "flex",
     flexWrap: "wrap",
     alignContent: "flex-start",
-    // alignItems: "flex-start",
     justifyContent: "center",
-    // marginBottom: ".5rem",
-    // overflow: "scroll",
   },
   cardContainer: {
     margin: ".1rem",
@@ -66,8 +58,7 @@ const styles = {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    marginTop: ".5rem",
-    overflow: "hidden",
+    margin: ".5rem 0",
   },
   fab: {
     width: "50%",
@@ -80,13 +71,7 @@ const styles = {
     },
   },
   "@media screen and (max-width: 600px)": {
-    diffEasy: {
-      gridTemplateColumns: "repeat(2, 25%)",
-      gridTemplateRows: "repeat(5, 19%) 5% ",
-      // gridGap: "1rem 1rem",
-      // gridColumnGap: "10px",
-      // gridRowGap: "10%",
-    },
+    easy: {},
   },
 };
 

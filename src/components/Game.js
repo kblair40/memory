@@ -12,11 +12,8 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#fff",
     backgroundColor: "rgba(55, 70, 74, 1)",
-    overflow: "hidden",
-    // overflowY: "scroll",
-    // overflowx: "hidden",
+    overflowY: "scroll",
   },
 };
 
