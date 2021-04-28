@@ -10,22 +10,22 @@ const styles = {
     alignItems: "center",
   },
   matchCount: {
-    color: "#167CB2",
+    color: "#fff",
     margin: ".5rem 0",
     fontWeight: "400",
     letterSpacing: ".05rem",
   },
   attempts: {
-    color: "#167CB2",
+    color: "#fff",
     margin: ".5rem 0",
     fontWeight: "400",
     letterSpacing: ".05rem",
   },
   secondaryColor: {
-    backgroundColor: "#167CB2",
+    backgroundColor: "rgb(95, 101, 129)",
   },
   progress: {
-    backgroundColor: "rgba(22, 124, 178, .3)",
+    backgroundColor: "#fff",
     width: "50%",
   },
   header: {

@@ -1,6 +1,12 @@
-/* html {
-  max-height: "100vh";
-} */
+html {
+  /* min-height: "630px"; */
+  /* overflow: hidden; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* width: 100vh; */
+  /* height: 100vh; */
+  /* background-color: rgba(55, 70, 74, 1); */
+}
 
 body {
   margin: 0;
@@ -9,9 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  overflow: hidden;
+  /* position: fixed; */
+  /* display: flex; */
 }

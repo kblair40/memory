@@ -7,6 +7,7 @@ import ScoreKeeper from "./ScoreKeeper";
 import Fab from "@material-ui/core/Fab";
 import { shuffle, getCards } from "../helpers";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import classNames from "classnames";
 
 const numberOfCards = {
   easy: 10,
@@ -16,70 +17,75 @@ const numberOfCards = {
 
 const styles = {
   Table: {
-    boxSizing: "border-box",
-    // overflow: "scroll",
-    // width: "95%",
-    maxWidth: "740px",
-    minWidth: "320px",
-    padding: "1rem",
-    display: "grid",
-    justifyContent: "center",
-    alignItems: "center",
-    justifyItems: "center",
-    gridColumnGap: ".2rem",
-    gridRowGap: ".1rem",
-    // border: "2px inset rgba(22, 124, 178, 0.3)",
-    // borderRadius: "8px",
-  },
-  diffEasy: {
-    gridTemplateColumns: "repeat(5, 19%)",
-    gridTemplateRows: "repeat(2, 1fr) .5fr",
-  },
-  diffMod: {
-    gridTemplateColumns: "repeat(6, 16.5%)",
-    gridTemplateRows: "repeat(4, 1fr) .5fr",
-    maxWidth: "700px",
-  },
-  diffHard: {
-    gridTemplateColumns: "repeat(8, minmax(auto, 12%))",
-    gridTemplateRows: "repeat(5, 18%) 10%",
-  },
-  // 245, 234, 214 #F5EAD6 - creme
-  // 22, 124, 178 #167CB2 - blue
-  fab: {
-    width: "50%",
-    gridColumn: "1/-1",
-    marginTop: "1rem",
-    marginBottom: "1rem",
-    backgroundColor: "rgba(22, 124, 178,1)",
-    color: "#F5EAD6",
-    letterSpacing: ".05rem",
-    transitionDuration: ".3s",
-    "&:hover": {
-      backgroundColor: "rgba(22, 124, 178, .9)",
-    },
-    // backgroundColor: "blue",
-    // position: "absolute",
-    // bottom: "1%",
-    // left: "50%",
-    // right: "25%",
-  },
-  scoreContainer: {
-    marginTop: "1rem",
     display: "flex",
     flexDirection: "column",
+    // justifyContent: "space-between",
+    justifyContent: "flex-start",
     alignItems: "center",
-    // position: "fixed",
-    // top: "1%",
-    // width: "50%",
+    alignContent: "center",
+    // width: "100%",
+    height: "100%",
+    boxSizing: "border-box",
+    maxWidth: "740px",
+    minWidth: "320px",
+    padding: "0 .5rem",
+    border: "2px inset rgb(141, 209, 205)",
+    borderRadius: "8px",
   },
-  "@media screen and (max-width: 400px)": {
-    diffHard: {
-      gridTemplateColumns: "repeat(6, 16%)",
-      gridTemplateRows: "repeat(7, 12%) 10%",
+  scoreContainer: {
+    width: "100%",
+  },
+  cards: {
+    // padding: "1rem",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    alignContent: "flex-start",
+    // alignItems: "flex-start",
+    justifyContent: "center",
+    // marginBottom: ".5rem",
+    // overflow: "scroll",
+  },
+  cardContainer: {
+    margin: ".1rem",
+  },
+  easy: {
+    width: "19%",
+    minWidth: "80px",
+  },
+  moderate: {
+    width: "15%",
+    minWidth: "60px",
+  },
+  hard: {
+    width: "12%",
+    minWidth: "55px",
+  },
+  fabContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: ".5rem",
+    overflow: "hidden",
+  },
+  fab: {
+    width: "50%",
+    backgroundColor: "#fff",
+    color: "rgb(55, 70, 74)",
+    fontSize: "22px",
+    transitionDuration: ".3s",
+    "&:hover": {
+      backgroundColor: "#fff",
     },
-    Table: {
-      gridGap: "none",
+  },
+  "@media screen and (max-width: 600px)": {
+    diffEasy: {
+      gridTemplateColumns: "repeat(2, 25%)",
+      gridTemplateRows: "repeat(5, 19%) 5% ",
+      // gridGap: "1rem 1rem",
+      // gridColumnGap: "10px",
+      // gridRowGap: "10%",
     },
   },
 };
@@ -210,53 +216,58 @@ class Table extends Component {
       attempts,
       scoreNeeded,
     } = this.state;
-    console.log("DISABLED????", isDisabled);
+
     const { endGame, difficulty, classes } = this.props;
     let gameOver = scoreNeeded > matchCount;
-    return (
-      <div className={classes.scoreContainer}>
-        {gameOver ? (
-          <ScoreKeeper
-            increment={100 / (numberOfCards[difficulty] / 2)}
-            matchCount={matchCount}
-            attempts={attempts}
-          />
-        ) : loading ? (
-          <CircularProgress />
-        ) : (
-          <GameOver />
 
-          // Replace with EndGame Component
-        )}
+    let cardClass;
+    if (difficulty === "easy") cardClass = classes.easy;
+    else if (difficulty === "moderate") cardClass = classes.moderate;
+    else cardClass = classes.hard;
+
+    return (
+      <div className={classes.Table}>
+        <div className={classes.scoreContainer}>
+          {gameOver ? (
+            <ScoreKeeper
+              increment={100 / (numberOfCards[difficulty] / 2)}
+              matchCount={matchCount}
+              attempts={attempts}
+            />
+          ) : loading ? (
+            <CircularProgress />
+          ) : (
+            <GameOver />
+            // Replace with EndGame Component
+          )}
+        </div>
         {!loading ? (
-          <div
-            className={`${classes.Table} ${
-              difficulty === "easy"
-                ? classes.diffEasy
-                : difficulty === "moderate"
-                ? classes.diffMod
-                : classes.diffHard
-            }`}
-          >
+          <div className={classes.cards}>
             {this.state.deck.map((card, idx) => (
-              <Card
-                handleFlip={this.handleFlip}
-                isFaceDown={card.isFaceDown} // changed from hardcoding true
-                isDisabled={isDisabled}
-                imgUrl={card.image}
-                id={card.key}
-                key={card.key}
-                className={classes.singleCard}
-              />
+              <div
+                className={classNames(classes.cardContainer, cardClass)}
+                // key={card.key}
+              >
+                <Card
+                  handleFlip={this.handleFlip}
+                  isFaceDown={card.isFaceDown}
+                  isDisabled={isDisabled}
+                  imgUrl={card.image}
+                  id={card.key}
+                  key={card.key}
+                />
+              </div>
             ))}
-            <Fab
-              className={classes.fab}
-              onClick={endGame}
-              variant="extended"
-              color="secondary"
-            >
-              {gameOver ? "Quit" : "Play Again!"}
-            </Fab>
+            <div className={classes.fabContainer}>
+              <Fab
+                className={classes.fab}
+                onClick={endGame}
+                variant="extended"
+                color="secondary"
+              >
+                {gameOver ? "Quit" : "Play Again!"}
+              </Fab>
+            </div>
           </div>
         ) : (
           <CircularProgress />
@@ -268,53 +279,49 @@ class Table extends Component {
 
 export default withStyles(styles)(Table);
 
-// return (
-//   <div className={classes.scoreContainer}>
-//     {gameOver ? (
-//       <ScoreKeeper
-//         increment={100 / (numberOfCards[difficulty] / 2)}
-//         matchCount={matchCount}
-//         attempts={attempts}
-//       />
-//     ) : loading ? (
-//       <CircularProgress />
-//     ) : (
-//       <h1>Game Over</h1>
-
-//       // Replace with EndGame Component
-//     )}
-//     {!loading ? (
-//       <div
-//         className={`${classes.Table} ${
-//           difficulty === "easy"
-//             ? classes.diffEasy
-//             : difficulty === "moderate"
-//             ? classes.diffMod
-//             : classes.diffHard
-//         }`}
-//       >
-//         {this.state.deck.map((card, idx) => (
-//           <Card
-//             handleFlip={this.handleFlip}
-//             isFaceDown={card.isFaceDown} // changed from hardcoding true
-//             isDisabled={isDisabled}
-//             imgUrl={card.image}
-//             id={card.key}
-//             key={card.key}
-//             className={classes.singleCard}
-//           />
-//         ))}
-//         <Fab
-//           className={classes.fab}
-//           onClick={endGame}
-//           variant="extended"
-//           color="secondary"
-//         >
-//           {gameOver ? "Quit" : "Play Again!"}
-//         </Fab>
-//       </div>
-//     ) : (
-//       <CircularProgress />
-//     )}
-//   </div>
-// );
+// const styles = {
+//   Table: {
+//     boxSizing: "border-box",
+//     // overflow: "scroll",
+//     // width: "95%",
+//     maxWidth: "740px",
+//     minWidth: "320px",
+//     padding: "1rem",
+//     display: "grid",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     justifyItems: "center",
+//     gridColumnGap: ".2rem",
+//     gridRowGap: ".1rem",
+//     // border: "2px inset rgba(22, 124, 178, 0.3)",
+//     // borderRadius: "8px",
+//   },
+//   diffEasy: {
+//     gridTemplateColumns: "repeat(5, 19%)",
+//     gridTemplateRows: "repeat(2, 1fr) .5fr",
+//   },
+//   diffMod: {
+//     gridTemplateColumns: "repeat(6, 16.5%)",
+//     gridTemplateRows: "repeat(4, 1fr) .5fr",
+//     maxWidth: "700px",
+//   },
+//   diffHard: {
+//     gridTemplateColumns: "repeat(8, minmax(auto, 12%))",
+//     gridTemplateRows: "repeat(5, 18%) 10%",
+//   },
+//   // 245, 234, 214 #F5EAD6 - creme
+//   // 22, 124, 178 #167CB2 - blue
+//   fab: {
+//     width: "50%",
+//     gridColumn: "1/-1",
+//     marginTop: "1rem",
+//     marginBottom: "1rem",
+//     backgroundColor: "#fff",
+//     color: "rgb(55, 70, 74)",
+//     fontSize: "22px",
+//     letterSpacing: ".05rem",
+//     transitionDuration: ".3s",
+//     "&:hover": {
+//       backgroundColor: "#fff",
+//     },
+//   },
