@@ -3,8 +3,6 @@ import Table from "./Table";
 import SetDifficulty from "./SetDifficulty";
 import { withStyles } from "@material-ui/core/styles";
 
-const DECKURL = "https://deckofcardsapi.com/api/deck/new/shuffle/?cards=";
-
 const styles = {
   Game: {
     height: "100vh",
@@ -21,6 +19,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      key: 1,
       gameStarted: false,
       gameOver: false,
       numOfCards: 10,
@@ -29,6 +28,11 @@ class Game extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.newGame = this.newGame.bind(this);
+  }
+
+  newGame() {
+    this.setState({ gameOver: false, gameStarted: true });
   }
 
   handleChange(e) {
@@ -40,8 +44,18 @@ class Game extends Component {
   }
 
   endGame() {
-    this.setState({ gameStarted: false });
+    this.setState({
+      gameStarted: false,
+      gameOver: true,
+      key: this.state.key + 1,
+    });
   }
+
+  // getKey() {
+  //   let key = this.state.key;
+  //   this.setState({ key: this.state.key + 1 });
+  //   return key;
+  // }
 
   render() {
     const { gameStarted, gameOver, difficulty } = this.state;
@@ -61,6 +75,8 @@ class Game extends Component {
       return (
         <div className={classes.Game}>
           <Table
+            key={this.state.key}
+            newGame={this.newGame}
             endGame={this.endGame}
             gameOver={gameOver}
             difficulty={difficulty}

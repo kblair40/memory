@@ -30,6 +30,11 @@ const styles = {
   },
   scoreContainer: {
     width: "100%",
+    display: "flex",
+    justifyContent: "center",
+  },
+  progress: {
+    color: "rgb(141, 209, 205)",
   },
   cards: {
     width: "100%",
@@ -93,6 +98,8 @@ class Table extends Component {
       loading: true,
     };
     this.handleFlip = this.handleFlip.bind(this);
+    // this.startGame = this.startGame.bind(this);
+    // this.newDeck = this.newDeck.bind(this);
   }
 
   async componentDidMount() {
@@ -220,10 +227,16 @@ class Table extends Component {
               attempts={attempts}
             />
           ) : loading ? (
-            <CircularProgress />
+            <CircularProgress className={classes.progress} />
           ) : (
-            <GameOver />
-            // Replace with EndGame Component
+            <div>
+              <ScoreKeeper
+                increment={100 / (numberOfCards[difficulty] / 2)}
+                matchCount={matchCount}
+                attempts={attempts}
+              />
+              <GameOver endGame={endGame} />
+            </div>
           )}
         </div>
         {!loading ? (
@@ -231,7 +244,7 @@ class Table extends Component {
             {this.state.deck.map((card, idx) => (
               <div
                 className={classNames(classes.cardContainer, cardClass)}
-                // key={card.key}
+                key={card.key}
               >
                 <Card
                   handleFlip={this.handleFlip}
@@ -239,7 +252,7 @@ class Table extends Component {
                   isDisabled={isDisabled}
                   imgUrl={card.image}
                   id={card.key}
-                  key={card.key}
+                  // key={card.key}
                 />
               </div>
             ))}
@@ -255,7 +268,7 @@ class Table extends Component {
             </div>
           </div>
         ) : (
-          <CircularProgress />
+          <CircularProgress className={classes.progress} />
         )}
       </div>
     );

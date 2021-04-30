@@ -11,32 +11,16 @@ const styles = {
     backgroundColor: "transparent",
     borderRadius: "5px",
   },
-
-  // cardContainer: {
-  //   display: "flex",
-  //   width: "16%",
-  //   alignItems: "center",
-  //   // boxSizing: "border-box",
-  //   // maxWidth: "100%",
-  //   flexDirection: "column",
-  //   position: "relative",
-  //   margin: ".1rem",
-  // },
-  flippy: {
-    backgroundColor: "black",
-  },
   cardFront: {},
   cardBack: {},
 };
-const noOverflow = { overflow: "hidden" };
 class Card extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log("HANDLE CLICK");
-    const { handleFlip, id, code } = this.props;
+    const { handleFlip, id } = this.props;
     handleFlip(id);
   }
 
@@ -53,7 +37,7 @@ class Card extends Component {
           flipDirection="horizontal"
         >
           <FrontSide style={{ padding: "0px" }}>
-            <img src={imgUrl} className={classes.img} />
+            <img src={imgUrl} alt="" className={classes.img} />
           </FrontSide>
 
           <BackSide
@@ -61,7 +45,7 @@ class Card extends Component {
               padding: "0px",
             }}
           >
-            <img src={cardBack} className={classes.img} />
+            <img src={cardBack} alt="" className={classes.img} />
           </BackSide>
         </Flippy>
       </div>
