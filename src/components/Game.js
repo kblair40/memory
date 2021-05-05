@@ -56,7 +56,6 @@ class Game extends Component {
       return (
         <div className={classes.Game}>
           <Table
-            // key={uuid()}
             newGame={this.newGame}
             endGame={this.endGame}
             gameOver={gameOver}
