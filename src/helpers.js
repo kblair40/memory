@@ -20,7 +20,6 @@ const STACK = [
   "9D",
   "0D",
 ];
-
 const CARDS = {
   easy: STACK.slice(0, 5).concat(STACK.slice(0, 5)),
   moderate: STACK.slice(0, 12).concat(STACK.slice(0, 12)),
@@ -28,7 +27,6 @@ const CARDS = {
 };
 
 function getCards(difficulty) {
-  console.log(difficulty, "returning", CARDS[difficulty]);
   return CARDS[difficulty];
 }
 

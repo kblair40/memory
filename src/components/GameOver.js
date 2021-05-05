@@ -2,30 +2,9 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import styles from "../styles/GameOverStyles";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Slide from "@material-ui/core/Slide";
-
-const styles = {
-  EndGame: {
-    fontFamily: "Roboto",
-    fontWeight: "700",
-    color: "rgb(55, 70, 74)",
-    // fontSize: "2rem",
-    // letterSpacing: ".05rem",
-    // justifyContent: "center",
-  },
-  yup: {
-    color: "rgb(119, 144, 121)",
-  },
-  nope: {
-    color: "rgb( 176, 101, 93)",
-  },
-};
-
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
 
 class GameOver extends Component {
   constructor(props) {
@@ -36,9 +15,6 @@ class GameOver extends Component {
     this.newGame = this.newGame.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-  state = {
-    open: true,
-  };
 
   handleClose() {
     this.setState({ open: false });
@@ -50,25 +26,17 @@ class GameOver extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <Dialog
-          className={classes.EndGame}
-          open={this.state.open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={this.handleClose}
-        >
-          <DialogTitle>{"Play Again?"}</DialogTitle>
-          <DialogActions>
-            <Button className={classes.nope} onClick={this.handleClose}>
-              Nope!
-            </Button>
-            <Button className={classes.yup} onClick={this.newGame}>
-              Yup!
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+      <Dialog open={this.state.open} keepMounted onClose={this.handleClose}>
+        <DialogTitle className={classes.EndGame}>{"Play Again?"}</DialogTitle>
+        <DialogActions>
+          <Button className={classes.nope} onClick={this.handleClose}>
+            Nope!
+          </Button>
+          <Button className={classes.yup} onClick={this.newGame}>
+            Yup!
+          </Button>
+        </DialogActions>
+      </Dialog>
     );
   }
 }

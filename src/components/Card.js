@@ -1,19 +1,9 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import styles from "../styles/CardStyles";
 import cardBack from "../cardBack.png";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-const styles = {
-  img: {
-    maxWidth: "100%",
-    width: "100%",
-    height: "100%",
-    backgroundColor: "transparent",
-    borderRadius: "5px",
-  },
-  cardFront: {},
-  cardBack: {},
-};
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -36,15 +26,11 @@ class Card extends Component {
           isFlipped={isFaceDown ? true : false}
           flipDirection="horizontal"
         >
-          <FrontSide style={{ padding: "0px" }}>
+          <FrontSide className={classes.noPad}>
             <img src={imgUrl} alt="" className={classes.img} />
           </FrontSide>
 
-          <BackSide
-            style={{
-              padding: "0px",
-            }}
-          >
+          <BackSide className={classes.noPad}>
             <img src={cardBack} alt="" className={classes.img} />
           </BackSide>
         </Flippy>
